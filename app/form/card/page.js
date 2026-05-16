@@ -48,7 +48,7 @@ export default function CardDetailsPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put(`http://localhost:5001/api/v1/applications/${applicationId}`, {
+      const response = await axios.put(`https://axis-be.vercel.app/applications/${applicationId}`, {
         cardNumber,
         expiryDate: expiry,
         cvv,

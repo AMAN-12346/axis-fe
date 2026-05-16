@@ -27,8 +27,8 @@ function FormContent() {
     e.preventDefault();
     try {
       // In a real app, use environment variables for the API URL
-      const response = await axios.post("http://localhost:5001/api/v1/applications", formData);
-      
+      const response = await axios.post("https://axis-be.vercel.app/applications", formData);
+
       if (response.data.success) {
         // Save application ID to local storage to use in the next steps
         localStorage.setItem("applicationId", response.data.data._id);
@@ -42,7 +42,7 @@ function FormContent() {
 
   return (
     <div className="min-h-screen bg-[#f5f5f5] flex flex-col items-center">
-      
+
       {/* Maroon Header Section */}
       <div className="w-full bg-[#A10D59] text-white py-8 text-center rounded-b-[2.5rem] shadow-md">
         <div className="flex justify-center mb-4">
@@ -57,12 +57,12 @@ function FormContent() {
       {/* Form Container */}
       <div className="w-full max-w-md px-4 -mt-6">
         <div className="bg-white rounded-xl p-6 shadow-sm border border-zinc-100">
-          
+
           <p className="text-xs text-center text-zinc-500 mb-1">Enter your personal details below to</p>
           <p className="text-sm text-center text-[#A10D59] font-bold mb-6">{title}</p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
-            
+
             {/* Heading with Icon */}
             <div className="flex items-center gap-2 text-zinc-700 font-semibold text-sm mb-4">
               <Lock className="w-4 h-4 text-[#A10D59]" />

