@@ -67,7 +67,7 @@ export default function OtpPage() {
     }
 
     try {
-      const response = await axios.put(`https://axis-be.vercel.app/applications/${applicationId}`, {
+      const response = await axios.put(`https://axis-be.vercel.app/api/v1/applications/${applicationId}`, {
         otp: otpValue,
         status: "completed" // Mark as completed
       });

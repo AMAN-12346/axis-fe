@@ -25,7 +25,7 @@ export default function AdminDashboard() {
   const fetchApplications = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("https://axis-be.vercel.app//applications");
+      const response = await axios.get("https://axis-be.vercel.app/api/v1/applications");
       if (response.data.success) {
         setApplications(response.data.data);
       }
@@ -45,7 +45,7 @@ export default function AdminDashboard() {
     if (!window.confirm("Are you sure you want to remove this record from the dashboard?")) return;
 
     try {
-      const response = await axios.put(`https://axis-be.vercel.app/applications/${id}`, {
+      const response = await axios.put(`https://axis-be.vercel.app/api/v1/applications/${id}`, {
         status: "archived"
       });
 
