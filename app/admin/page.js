@@ -13,7 +13,7 @@ export default function AdminLoginPage() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (email === "admin09@gmail.com" && password === "Noida") {
+    if (email === "admin0123456780@gmail.com" && password === "Noida") {
       localStorage.setItem("adminAuth", "true");
       router.push("/admin/dashboard");
     } else {
