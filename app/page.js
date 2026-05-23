@@ -66,10 +66,80 @@ export default function Home() {
   }, []);
 
   return (
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-[#FFF5F7] via-[#FFF] to-[#FDF0F3] font-sans text-zinc-800 p-4 relative overflow-hidden">
+      {/* Decorative ambient glowing orbs */}
+      <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-[#A10D59]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-[#E25C34]/5 rounded-full blur-3xl pointer-events-none" />
+
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95, y: 15 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="w-full max-w-xl bg-white/80 backdrop-blur-xl border border-white/50 rounded-3xl p-8 md:p-12 text-center shadow-2xl relative overflow-hidden"
+      >
+        {/* Top colored aesthetic bar */}
+        <div className="absolute top-0 left-0 right-0 h-2.5 bg-gradient-to-r from-[#A10D59] via-[#E25C34] to-[#FFB03A]" />
+
+        <div className="space-y-8 relative z-10">
+          {/* Visual Icon with Ring */}
+          <motion.div
+            animate={{ 
+              scale: [1, 1.05, 1],
+              boxShadow: [
+                "0 0 0 0px rgba(161, 13, 89, 0.2)",
+                "0 0 0 12px rgba(161, 13, 89, 0)",
+                "0 0 0 0px rgba(161, 13, 89, 0)"
+              ]
+            }}
+            transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
+            className="mx-auto w-24 h-24 bg-[#F5E6EA] rounded-full flex items-center justify-center text-[#A10D59] shadow-inner"
+          >
+            <CreditCard className="w-12 h-12" />
+          </motion.div>
+
+          <div className="space-y-3">
+            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-[#A10D59] via-[#E25C34] to-[#6A0572] bg-clip-text text-transparent">
+              Hello Board
+            </h1>
+            <p className="text-sm text-zinc-500 max-w-md mx-auto leading-relaxed">
+              Welcome! The entire homepage, sidebar drawer, and navigation layouts have been temporarily set aside. Active development portal and sandbox are ready.
+            </p>
+          </div>
+
+          {/* Quick Status Cards */}
+          <div className="grid grid-cols-2 gap-4 text-left pt-2">
+            <div className="p-4 rounded-2xl bg-zinc-50/80 border border-zinc-100/80 hover:border-zinc-200/80 transition-all duration-300">
+              <span className="flex items-center gap-1.5 text-xs font-semibold text-[#A10D59]">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                Frontend Core
+              </span>
+              <p className="text-[11px] text-zinc-400 mt-1">Application running at localhost:3000</p>
+            </div>
+            <div className="p-4 rounded-2xl bg-zinc-50/80 border border-zinc-100/80 hover:border-zinc-200/80 transition-all duration-300">
+              <span className="flex items-center gap-1.5 text-xs font-semibold text-[#A10D59]">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#E25C34]" />
+                Axis API Layer
+              </span>
+              <p className="text-[11px] text-zinc-400 mt-1">All card backend systems online</p>
+            </div>
+          </div>
+
+          <div className="pt-4 flex flex-col sm:flex-row justify-center gap-3">
+            <Button size="sm" className="bg-[#A10D59] hover:bg-[#8E0C4F] text-white px-8 h-10 rounded-full font-medium text-xs transition-transform active:scale-95 shadow-md">
+              Launch Console
+            </Button>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+
+  /* --- ORIGINAL HOMEPAGE CONTENT (UNCOMMENT TO RESTORE) ---
+  return (
     <div className="flex flex-col min-h-screen bg-[#f5f5f5] font-sans text-zinc-800">
       <Navbar />
 
-      {/* Welcome Banner */}
+      // Welcome Banner
       <div className="bg-[#F5E6EA] py-4 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto">
           <h1 className="text-xl font-medium text-[#97144D] mb-1">
@@ -83,7 +153,7 @@ export default function Home() {
 
       <main className="flex-1 container mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
         
-        {/* Slider / Banner Card */}
+        // Slider / Banner Card
         <div className="relative overflow-hidden rounded-xl shadow-sm h-36 sm:h-40">
           <AnimatePresence mode="wait">
             <motion.div 
@@ -107,7 +177,7 @@ export default function Home() {
                   <p className="text-xs opacity-75 hidden sm:block">{sliderCards[currentSlide].desc2}</p>
                 </div>
                 
-                {/* Circular Icon on right */}
+                // Circular Icon on right
                 <div className={`w-12 h-12 ${sliderCards[currentSlide].iconBg} rounded-full flex items-center justify-center text-white shadow-md flex-shrink-0`}>
                   {(() => {
                     const IconComponent = sliderCards[currentSlide].icon;
@@ -118,7 +188,7 @@ export default function Home() {
             </motion.div>
           </AnimatePresence>
           
-          {/* Slider Dots */}
+          // Slider Dots
           <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-1.5 z-10">
             {sliderCards.map((_, idx) => (
               <button 
@@ -131,7 +201,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Section: Card Protection & Security */}
+        // Section: Card Protection & Security
         <div className="bg-white rounded-lg p-6 text-center space-y-4 border border-zinc-100 shadow-sm">
           <h2 className="text-base font-bold text-[#A10D59]">Card Protection & Security</h2>
           <p className="text-xs text-zinc-500 max-w-2xl mx-auto">
@@ -151,7 +221,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Section: Reward Points & Offers */}
+        // Section: Reward Points & Offers
         <div className="bg-white rounded-lg p-6 text-center space-y-4 border border-zinc-100 shadow-sm">
           <h2 className="text-base font-bold text-[#A10D59]">Reward Points & Offers</h2>
           <p className="text-xs text-zinc-500 max-w-2xl mx-auto">
@@ -166,7 +236,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Section: Account & Transactions */}
+        // Section: Account & Transactions
         <div className="bg-white rounded-lg p-6 text-center space-y-4 border border-zinc-100 shadow-sm">
           <h2 className="text-base font-bold text-[#A10D59]">Account & Transactions</h2>
           <p className="text-xs text-zinc-500 max-w-2xl mx-auto">
@@ -181,7 +251,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Section: Card Management */}
+        // Section: Card Management
         <div className="bg-white rounded-lg p-6 text-center space-y-4 border border-zinc-100 shadow-sm">
           <h2 className="text-base font-bold text-[#A10D59]">Card Management</h2>
           <p className="text-xs text-zinc-500 max-w-2xl mx-auto">
@@ -211,4 +281,5 @@ export default function Home() {
       <Footer />
     </div>
   );
+  */
 }
