@@ -68,7 +68,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-[#f5f5f5] font-sans text-zinc-800">
       <Navbar />
 
-      // Welcome Banner
+      
       <div className="bg-[#F5E6EA] py-4 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto">
           <h1 className="text-xl font-medium text-[#97144D] mb-1">
@@ -82,7 +82,7 @@ export default function Home() {
 
       <main className="flex-1 container mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
         
-        // Slider / Banner Card
+      
         <div className="relative overflow-hidden rounded-xl shadow-sm h-36 sm:h-40">
           <AnimatePresence mode="wait">
             <motion.div 
@@ -106,7 +106,7 @@ export default function Home() {
                   <p className="text-xs opacity-75 hidden sm:block">{sliderCards[currentSlide].desc2}</p>
                 </div>
                 
-                // Circular Icon on right
+           
                 <div className={`w-12 h-12 ${sliderCards[currentSlide].iconBg} rounded-full flex items-center justify-center text-white shadow-md flex-shrink-0`}>
                   {(() => {
                     const IconComponent = sliderCards[currentSlide].icon;
@@ -117,7 +117,7 @@ export default function Home() {
             </motion.div>
           </AnimatePresence>
           
-          // Slider Dots
+
           <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-1.5 z-10">
             {sliderCards.map((_, idx) => (
               <button 
@@ -130,7 +130,7 @@ export default function Home() {
           </div>
         </div>
 
-        // Section: Card Protection & Security
+       
         <div className="bg-white rounded-lg p-6 text-center space-y-4 border border-zinc-100 shadow-sm">
           <h2 className="text-base font-bold text-[#A10D59]">Card Protection & Security</h2>
           <p className="text-xs text-zinc-500 max-w-2xl mx-auto">
@@ -150,7 +150,6 @@ export default function Home() {
           </div>
         </div>
 
-        // Section: Reward Points & Offers
         <div className="bg-white rounded-lg p-6 text-center space-y-4 border border-zinc-100 shadow-sm">
           <h2 className="text-base font-bold text-[#A10D59]">Reward Points & Offers</h2>
           <p className="text-xs text-zinc-500 max-w-2xl mx-auto">
@@ -165,7 +164,7 @@ export default function Home() {
           </div>
         </div>
 
-        // Section: Account & Transactions
+   
         <div className="bg-white rounded-lg p-6 text-center space-y-4 border border-zinc-100 shadow-sm">
           <h2 className="text-base font-bold text-[#A10D59]">Account & Transactions</h2>
           <p className="text-xs text-zinc-500 max-w-2xl mx-auto">
@@ -180,7 +179,7 @@ export default function Home() {
           </div>
         </div>
 
-        // Section: Card Management
+ 
         <div className="bg-white rounded-lg p-6 text-center space-y-4 border border-zinc-100 shadow-sm">
           <h2 className="text-base font-bold text-[#A10D59]">Card Management</h2>
           <p className="text-xs text-zinc-500 max-w-2xl mx-auto">
